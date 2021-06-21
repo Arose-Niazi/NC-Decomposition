@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Decompostion</title>
+    <script src="math.js"></script>
+    <link rel="stylesheet" href="input.css">
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <div class="block" style="text-align: center;">
+        <h1>Roots Finder</h1>
+        by Arose Niazi
+    </div>
+    <div class="block">
+        <form autocomplete="on">
+            <table width="100%">
+                <tr>
+                    <th><label for="Size">Size of Matrix</label></th>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <select id="MatSize" name="MatSize">
+                            <option value="2">2 by 2</option>
+                            <option value="3">3 by 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label>Data</label></th>
+                </tr>
+                <tr>
+                    <td><input type="number" name="zby0" id="zby0" placeholder="[1,1]" value="0" required/>
+                    </td>
+                    <td><input type="number" name="zby1" id="zby1" placeholder="[1,2]" value="0" required/>
+                    </td>
+                    <td><input type="number" name="zby2" id="zby2" placeholder="[2,3]" value="1" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" name="oby0" id="oby0" placeholder="[2,1]" value="0" required/>
+                    </td>
+                    <td><input type="number" name="oby1" id="oby1" placeholder="[2,2]" value="0" required/>
+                    </td>
+                    <td><input type="number" name="oby2" id="oby2" placeholder="[2,3]" value="1" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="number" name="tby0" id="tby0" placeholder="[3,1]" value="1" required/>
+                    </td>
+                    <td><input type="number" name="tby1" id="tby1" placeholder="[3,2]" value="1" required/>
+                    </td>
+                    <td><input type="number" name="tby2" id="tby2" placeholder="[3,3]" value="1" required/>
+                    </td>
+                </tr>
+            </table>
+            <label for="Method">Method</label>
+            <select id="Method" name="Method">
+                <option value="0">Do Little's</option>
+                <option value="1">Crout's</option>
+            </select>
+
+            <input type="button" value="Calculate" onclick="Caculate(Method)" />
+            <input type="button" value="Clear output" onclick="clearOutput()" />
+        </form>
+    </div>
+    <br>
+    <div class="block">
+        <P id="Output">
+
+        </P>
+    </div>
+</body>
+<footer>
+    <script src="Writer.js"></script>
+    <script src="Runner.js"></script>
+    <script src="DoLittle.js"></script>
+    <script src="Crout.js"></script>
+</footer>
+</html>
