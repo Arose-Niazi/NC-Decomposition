@@ -9,6 +9,10 @@ let matrixStructure = [
 matrixSizeElement = document.getElementById("MatSize");
 matrixSizeElement.onchange = UpdateMatrixSize;
 
+
+let LinearSolutionElement = document.getElementById("SolveFurther");
+LinearSolutionElement.onchange = UpdateBMatrix;
+
 UpdateMatrixSize();
 
 function UpdateMatrixSize() {
@@ -21,7 +25,22 @@ function UpdateMatrixSize() {
             loc.disabled = (i >= val || j >= val);
         }
     }
+    UpdateBMatrix();
+}
 
+function UpdateBMatrix() {
+    if(LinearSolutionElement.value == "1")
+    {
+        document.getElementById("b0").disabled = false;
+        document.getElementById("b1").disabled = false;
+        document.getElementById("b2").disabled = !(matrixSizeElement.value > 2);
+    }
+    else
+    {
+        document.getElementById("b0").disabled = true;
+        document.getElementById("b1").disabled = true;
+        document.getElementById("b2").disabled = true;
+    }
 }
 
 //Variables to be used
@@ -39,7 +58,7 @@ const keyValue = (input) => Object.entries(input).forEach(([key,value]) => {
     println(key +" = "+ value);
 });
 
-function Caculate(Method, SolveFurther)
+function Caculate(Method)
 {
     let data = [];
     for(let i=0; i<matrixStructure.length; i++)
@@ -58,13 +77,13 @@ function Caculate(Method, SolveFurther)
     bMatrix[2] = document.getElementById("b2").value;
 
 
-
     if(Method.value == 0)
         new DoLittle(matrixSizeElement.value, data);
     else
         new Crout(matrixSizeElement.value, data);
 
-    new SolveEquation(matrixSizeElement.value, data);
+    if(LinearSolutionElement.value == "1")
+        new SolveEquation(matrixSizeElement.value);
 }
 
 function equationSolve(x)
