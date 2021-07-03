@@ -32,12 +32,14 @@ let scope;
 let equation;
 let derivative;
 const allConstants = ["a","b", "c", "d", "e", "f"];
+let bMatrix = [0,0,0];
+let LSolved,USolved;
 
 const keyValue = (input) => Object.entries(input).forEach(([key,value]) => {
     println(key +" = "+ value);
 });
 
-function Caculate(Method)
+function Caculate(Method, SolveFurther)
 {
     let data = [];
     for(let i=0; i<matrixStructure.length; i++)
@@ -50,10 +52,19 @@ function Caculate(Method)
         }
         data[i] = row;
     }
+
+    bMatrix[0] = document.getElementById("b0").value;
+    bMatrix[1] = document.getElementById("b1").value;
+    bMatrix[2] = document.getElementById("b2").value;
+
+
+
     if(Method.value == 0)
         new DoLittle(matrixSizeElement.value, data);
     else
         new Crout(matrixSizeElement.value, data);
+
+    new SolveEquation(matrixSizeElement.value, data);
 }
 
 function equationSolve(x)

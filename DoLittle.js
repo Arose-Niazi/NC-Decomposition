@@ -129,9 +129,11 @@ class DoLittle {
         printHeading("L and U after Do Little's Method", true, "h3");
         this.printSize([["","L",""]], true);
         this.printSize(this.LSolved, false);
+        LSolved = this.LSolved;
 
         this.printSize([["","U",""]], true);
         this.printSize(this.USolved, false);
+        USolved = this.USolved;
     }
 
     printSize(data, heading = false)
